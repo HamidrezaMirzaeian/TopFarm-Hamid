@@ -1,7 +1,8 @@
 import importlib
 import importlib.util
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import plot, draw, show
 
 from py_wake.deficit_models.gaussian import IEA37SimpleBastankhahGaussian     #wake model
 from py_wake.examples.data.iea37 import IEA37_WindTurbines, IEA37Site         #wind turbines and site used
@@ -35,3 +36,15 @@ tf_problem = TopFarmProblem(
             driver=driver,
             plot_comp=XYPlotComp())
 _, state, _ = tf_problem.optimize()
+x_values = state['x']
+y_values = state['y']
+
+# Plot the design variables
+plt.figure()
+plt.plot(x_values, y_values, 'o')
+plt.xlabel('X-coordinate')
+plt.ylabel('Y-coordinate')
+plt.title('Optimized Wind Farm Layout')
+plt.grid(True)
+plt.axis('equal')  # Set aspect ratio to be equal
+plt.show()

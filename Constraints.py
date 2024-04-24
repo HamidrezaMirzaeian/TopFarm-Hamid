@@ -37,3 +37,4 @@ def plot_boundary(name, constraint_comp):
 
 plot_boundary('convex_hull', XYBoundaryConstraint(boundary, 'convex_hull'))
 plt.show()
+
